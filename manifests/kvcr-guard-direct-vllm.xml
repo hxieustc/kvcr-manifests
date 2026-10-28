@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Exact source revisions for the Direct Guard AgentX r18/r19 reproduction.
+     Dynamo runtime parity uses the separately SHA256-locked wheels in
+     guard-direct/config/pins.json. Its source revision below is the archived
+     quickstart reference, NOT a proven build revision for those wheels.
+     Freeze the manifest/scripts checkout itself with `repo manifest -r`. -->
+<manifest>
+  <remote name="github-ssh" fetch="ssh://git@github.com/" />
+  <default remote="github-ssh" sync-j="4" />
+  <project name="hxieustc/kvcr-manifests" path="manifests" revision="refs/heads/develop" />
+  <project name="hxieustc/vllm" path="vllm"
+           revision="239b61aae8ab62114a8543891c769ca6f0d664e0"
+           upstream="refs/heads/harryx/guard-direct" dest-branch="harryx/guard-direct" />
+  <project name="ai-dynamo/kvcr" path="kvcr"
+           revision="0cc2cc94b987cadce6c65eb000b61f425ab1ee7a"
+           upstream="refs/heads/harryx/guard-direct" dest-branch="harryx/guard-direct" />
+  <project name="ai-dynamo/aiperf" path="aiperf"
+           revision="abf55f902cde0a3e8389c452a83ecbf5ba15dea9" />
+  <project name="ai-dynamo/dynamo" path="dynamo"
+           revision="ea23e5130c1bfbadec477b99449d0cee5598caa0">
+    <annotation name="guard-direct.source-role" value="archived-quickstart-reference-not-wheel-build-provenance" />
+  </project>
+</manifest>
