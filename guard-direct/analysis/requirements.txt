@@ -1,3 +1,0 @@
-ijson>=3.2
-matplotlib>=3.6
-msgspec>=0.18

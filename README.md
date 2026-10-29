@@ -1,7 +1,7 @@
 # kvcc-manifests
 
 For the pinned KVCR/vLLM direct Guard AgentX workflow, use
-[guard-direct/README.md](guard-direct/README.md) and
+[kvcr-benchmark/guard-direct](https://github.com/hxieustc/kvcr-benchmark/tree/develop/guard-direct) and
 [manifests/kvcr-guard-direct-vllm.xml](manifests/kvcr-guard-direct-vllm.xml).
 
 Google Repo manifests and scripts for synchronizing, building, and testing

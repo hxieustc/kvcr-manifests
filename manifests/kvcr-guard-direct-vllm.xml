@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Exact source revisions for the Direct Guard AgentX r18/r19 reproduction.
      Dynamo runtime parity uses the separately SHA256-locked wheels in
-     guard-direct/config/pins.json. Its source revision below is the archived
+     kvcr-benchmark/guard-direct/config/pins.json. Its source revision below is the archived
      quickstart reference, NOT a proven build revision for those wheels.
      Freeze the manifest/scripts checkout itself with `repo manifest -r`. -->
 <manifest>
   <remote name="github-ssh" fetch="ssh://git@github.com/" />
   <default remote="github-ssh" sync-j="4" />
   <project name="hxieustc/kvcr-manifests" path="manifests" revision="refs/heads/develop" />
+  <project name="hxieustc/kvcr-benchmark" path="kvcr-benchmark" revision="2f5040d5c5b80905845e691807f37a648bd989a3" upstream="refs/heads/develop" />
   <project name="hxieustc/vllm" path="vllm"
            revision="239b61aae8ab62114a8543891c769ca6f0d664e0"
            upstream="refs/heads/harryx/guard-direct" dest-branch="harryx/guard-direct" />
