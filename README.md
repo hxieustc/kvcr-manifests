@@ -1,5 +1,9 @@
 # kvcc-manifests
 
+For the pinned KVCR/vLLM direct Guard AgentX workflow, use
+[guard-direct/README.md](guard-direct/README.md) and
+[manifests/kvcr-guard-direct-vllm.xml](manifests/kvcr-guard-direct-vllm.xml).
+
 Google Repo manifests and scripts for synchronizing, building, and testing
 customized Dynamo, vLLM, and KVCC together. It tracks:
 

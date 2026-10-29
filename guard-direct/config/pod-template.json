@@ -1,0 +1,148 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "guard-direct-agentx",
+    "namespace": "kvcc-mbench",
+    "labels": {
+      "app": "guard-direct-agentx",
+      "benchmark.kvcr/retain-pod": "true"
+    },
+    "annotations": {
+      "gpu-reaper.nvidia.com/opt-out": "true"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "command": [
+          "bash",
+          "-c",
+          "if [ ! -f /sys/fs/cgroup/memory.current ]; then\n  cg=$(sed -n 's/^0:://p' /proc/self/cgroup)\n  if ! { test -f \"/sys/fs/cgroup$cg/memory.current\" && mount --bind \"/sys/fs/cgroup$cg\" /sys/fs/cgroup && mount -o remount,bind,ro /sys/fs/cgroup; }; then\n    echo 'Cannot expose own cgroup; retain pod for inspection' >&2\n  fi\nfi\nexec sleep infinity\n"
+        ],
+        "env": [
+          {
+            "name": "UCX_TLS",
+            "value": "rc,cuda_copy"
+          },
+          {
+            "name": "UCX_NET_DEVICES",
+            "value": "mlx5_0:1"
+          },
+          {
+            "name": "UCX_MAX_RMA_RAILS",
+            "value": "1"
+          },
+          {
+            "name": "NIXL_UCX_SGL_ENABLE",
+            "value": "1"
+          },
+          {
+            "name": "KVCR_NVTX_LEVEL",
+            "value": "off"
+          }
+        ],
+        "image": "vllm/vllm-openai:nightly-43b4aaea3e40e20ef53ce2bfecfa1b72060bf2b5@sha256:f8696a5176c1fb61e025b0772505674a3e092c25597eb26117003945b5121e8d",
+        "imagePullPolicy": "IfNotPresent",
+        "name": "main",
+        "resources": {
+          "limits": {
+            "cpu": "192",
+            "memory": "2000Gi",
+            "nvidia.com/gpu": "8"
+          },
+          "requests": {
+            "cpu": "120",
+            "memory": "1800Gi",
+            "nvidia.com/gpu": "8"
+          }
+        },
+        "securityContext": {
+          "capabilities": {
+            "add": [
+              "IPC_LOCK",
+              "SYS_PTRACE"
+            ]
+          },
+          "privileged": true
+        },
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": [
+          {
+            "mountPath": "/dev/shm",
+            "name": "shm"
+          },
+          {
+            "mountPath": "/workspace",
+            "name": "workspace"
+          },
+          {
+            "mountPath": "/models-shared",
+            "name": "models",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/dev/infiniband",
+            "name": "rdma-host-devices"
+          },
+          {
+            "mountPath": "/tmp",
+            "name": "runtime-tmp"
+          }
+        ]
+      }
+    ],
+    "dnsPolicy": "ClusterFirst",
+    "enableServiceLinks": true,
+    "nodeSelector": {
+      "nvidia.com/gpu.product": "NVIDIA-B200"
+    },
+    "restartPolicy": "Never",
+    "schedulerName": "default-scheduler",
+    "securityContext": {},
+    "terminationGracePeriodSeconds": 1800,
+    "tolerations": [
+      {
+        "key": "nvidia.com/gpu",
+        "operator": "Exists",
+        "effect": "NoSchedule"
+      }
+    ],
+    "volumes": [
+      {
+        "emptyDir": {
+          "medium": "Memory",
+          "sizeLimit": "1750Gi"
+        },
+        "name": "shm"
+      },
+      {
+        "name": "workspace",
+        "persistentVolumeClaim": {
+          "claimName": "kv-p2p-workspace"
+        }
+      },
+      {
+        "name": "models",
+        "persistentVolumeClaim": {
+          "claimName": "shared-model-cache"
+        }
+      },
+      {
+        "hostPath": {
+          "path": "/dev/infiniband",
+          "type": "Directory"
+        },
+        "name": "rdma-host-devices"
+      },
+      {
+        "emptyDir": {
+          "medium": "Memory",
+          "sizeLimit": "8Gi"
+        },
+        "name": "runtime-tmp"
+      }
+    ]
+  }
+}
