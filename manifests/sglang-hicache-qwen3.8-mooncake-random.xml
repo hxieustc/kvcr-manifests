@@ -4,7 +4,7 @@
   <remote name="github" fetch="https://github.com/" />
   <default sync-j="4" remote="github" />
   <project name="hxieustc/kvcr-manifests" path="manifests" revision="refs/heads/develop" />
-  <project name="hxieustc/kvcr-benchmark" path="kvcr-benchmark" revision="faca33f18452a2cb5a8b73f74f09b4b3977fd040" upstream="refs/heads/develop">
+  <project name="hxieustc/kvcr-benchmark" path="kvcr-benchmark" revision="158559d7e65066ca83115fb1b66c5fe3fbff3210" upstream="refs/heads/develop">
     <annotation name="qwen38.hicache.case" value="mooncake-random" />
     <annotation name="qwen38.hicache.historical-attempt" value="hicache-1800-r5" />
     <annotation name="qwen38.hicache.config" value="sglang-hicache-qwen3.8/recorded/mooncake-random/config" />

@@ -2,7 +2,13 @@
 
 Three completed r5 arms; no external linker. Full source SHAs include the shared SGLang/Dynamo compatibility patches. KVCR core is the unchanged tested commit. Moon engine is unmodified; random/local_first is a configuration difference. No unmeasured optimization manifests are invented.
 
-[KVCR reproduction](https://github.com/hxieustc/kvcr-benchmark/blob/faca33f18452a2cb5a8b73f74f09b4b3977fd040/sglang-hicache-qwen3.8/sglang-hicache-qwen3.8-kvcr.md) · [Mooncake reproduction](https://github.com/hxieustc/kvcr-benchmark/blob/faca33f18452a2cb5a8b73f74f09b4b3977fd040/sglang-hicache-qwen3.8/sglang-hicache-qwen3.8-mooncake.md) · [manual component execution](https://github.com/hxieustc/kvcr-benchmark/blob/faca33f18452a2cb5a8b73f74f09b4b3977fd040/sglang-hicache-qwen3.8/manual-running.md).
+| Documentation | Guide |
+|---|---|
+| KVCR Google Repo workflow | [sglang-hicache-qwen3.8-kvcr.md](https://github.com/hxieustc/kvcr-benchmark/blob/158559d7e65066ca83115fb1b66c5fe3fbff3210/sglang-hicache-qwen3.8/sglang-hicache-qwen3.8-kvcr.md) |
+| Mooncake Google Repo workflow | [sglang-hicache-qwen3.8-mooncake.md](https://github.com/hxieustc/kvcr-benchmark/blob/158559d7e65066ca83115fb1b66c5fe3fbff3210/sglang-hicache-qwen3.8/sglang-hicache-qwen3.8-mooncake.md) |
+| KVCR manual execution | [manual-running-kvcr.md](https://github.com/hxieustc/kvcr-benchmark/blob/158559d7e65066ca83115fb1b66c5fe3fbff3210/sglang-hicache-qwen3.8/manual-running-kvcr.md) |
+| Mooncake manual execution | [manual-running-mooncake.md](https://github.com/hxieustc/kvcr-benchmark/blob/158559d7e65066ca83115fb1b66c5fe3fbff3210/sglang-hicache-qwen3.8/manual-running-mooncake.md) |
+| Matched comparison | [comparison.md](https://github.com/hxieustc/kvcr-benchmark/blob/158559d7e65066ca83115fb1b66c5fe3fbff3210/sglang-hicache-qwen3.8/comparison.md) |
 
 | Manifest | Case |
 |---|---|
