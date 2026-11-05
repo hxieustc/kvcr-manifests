@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <!--Completed native HiCache r5 source/configuration; no external linker. Source revisions include recorded compatibility fixes.-->
+  <remote name="github" fetch="https://github.com/" />
+  <default sync-j="4" remote="github" />
+  <project name="hxieustc/kvcr-manifests" path="manifests" revision="refs/heads/develop" />
+  <project name="hxieustc/kvcr-benchmark" path="kvcr-benchmark" revision="faca33f18452a2cb5a8b73f74f09b4b3977fd040" upstream="refs/heads/develop">
+    <annotation name="qwen38.hicache.case" value="mooncake-random" />
+    <annotation name="qwen38.hicache.historical-attempt" value="hicache-1800-r5" />
+    <annotation name="qwen38.hicache.config" value="sglang-hicache-qwen3.8/recorded/mooncake-random/config" />
+    <annotation name="qwen38.hicache.host-bytes" value="27487790694" />
+    <annotation name="qwen38.hicache.backend-bytes" value="109951162778" />
+    <annotation name="qwen38.hicache.model-revision" value="fc694b54fb0174e0913e6adf86691ef85a4ead47" />
+    <annotation name="qwen38.hicache.trace-revision" value="8fecd2fc56694469f758f0afbbb6335ad3043740" />
+  </project>
+  <project name="hxieustc/sglang" path="software/sglang" revision="081c4c5da234deb73078acfc09174286d5b3af05" upstream="refs/heads/sglang-hicache-qwen3.8-complete-checkpoints-budget-router-keys" dest-branch="sglang-hicache-qwen3.8-complete-checkpoints-budget-router-keys">
+    <annotation name="qwen38.hicache.original-base" value="658755604ace9f476b84f98511f76b815606072a" />
+  </project>
+  <project name="hxieustc/kvcr" path="software/kvcr" revision="5ce23b1527725cf623a3fc7feb94dc6d3d5fafaa" upstream="refs/heads/sglang-hicache-qwen3.8-clean-native-base" dest-branch="sglang-hicache-qwen3.8-clean-native-base">
+    <annotation name="qwen38.hicache.original-base" value="5ce23b1527725cf623a3fc7feb94dc6d3d5fafaa" />
+  </project>
+  <project name="hxieustc/dynamo" path="software/dynamo" revision="f28d277edaf403ba5cae65bece687f7b29c0eba3" upstream="refs/heads/sglang-hicache-qwen3.8-cache-key-handshake" dest-branch="sglang-hicache-qwen3.8-cache-key-handshake">
+    <annotation name="qwen38.hicache.original-base" value="3f0ef62c22ce2e212fd7a6394ef98d84f5f9a23b" />
+  </project>
+  <project name="SemiAnalysisAI/agentx-harness" path="software/aiperf" revision="e4bb2f835ffedbbe6b76252ea5c93caec68c5faf" upstream="refs/tags/agentx-v1.0.12">
+    <annotation name="qwen38.hicache.client-runtime" value="AgentX 1.0.12 released wheel SHA256 3d1f06f941bace12ab26c112bb6b5b1727dc160241c696851604e5269d874835 plus trace revision fixture; see client-package.lock.json" />
+  </project>
+</manifest>
