@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <!--Historical GB300 direct-linker experiment; revisions below include recorded compatibility/optimization patches.-->
+  <remote name="github" fetch="https://github.com/" />
+  <default sync-j="4" remote="github" />
+  <project name="hxieustc/kvcr-manifests" path="manifests" revision="refs/heads/develop" />
+  <project name="hxieustc/kvcr-benchmark" path="kvcr-benchmark" revision="0ed96a2dfc02b2829295e7ead834b72946a4699d" upstream="refs/heads/develop">
+    <annotation name="qwen38.stage" value="kvcr-incremental-confirmation" />
+    <annotation name="qwen38.settings" value="sglang-linker-qwen3.8/stages/kvcr-incremental-confirmation/stage.json" />
+    <annotation name="qwen38.backend" value="kvcr" />
+    <annotation name="qwen38.model-revision" value="fc694b54fb0174e0913e6adf86691ef85a4ead47" />
+    <annotation name="qwen38.trace-revision" value="8fecd2fc56694469f758f0afbbb6335ad3043740" />
+    <annotation name="qwen38.historical-attempt" value="gb300-incremental-confirmation-r1" />
+  </project>
+  <project name="hxieustc/sglang" path="software/sglang" revision="115a0fb18396aa0c0ba1ca45f6d96baaf3474fe6" upstream="refs/heads/qwen3.8-linker-incremental-confirmation" dest-branch="qwen3.8-linker-incremental-confirmation">
+    <annotation name="qwen38.original-base" value="5b65e088969b872b924355d20a329e9816a1b094" />
+  </project>
+  <project name="hxieustc/kvcr" path="software/kvcr" revision="013955b73526a01b3f242da185f31deb41d14b5c" upstream="refs/heads/qwen3.8-linker-per-pool-eviction-index" dest-branch="qwen3.8-linker-per-pool-eviction-index">
+    <annotation name="qwen38.original-base" value="3d8c9b831e8fde161d510ac233550314724880e9" />
+  </project>
+  <project name="hxieustc/dynamo" path="software/dynamo" revision="f28d277edaf403ba5cae65bece687f7b29c0eba3" upstream="refs/heads/qwen3.8-linker-cache-key-handshake" dest-branch="qwen3.8-linker-cache-key-handshake">
+    <annotation name="qwen38.original-base" value="3f0ef62c22ce2e212fd7a6394ef98d84f5f9a23b" />
+  </project>
+  <project name="SemiAnalysisAI/agentx-harness" path="software/aiperf" revision="e4bb2f835ffedbbe6b76252ea5c93caec68c5faf" upstream="refs/tags/agentx-v1.0.12">
+    <annotation name="qwen38.install-source" value="SHA256-locked AgentX 1.0.12 wheel plus trace revision fixture; see client-package.lock.json" />
+    <annotation name="qwen38.wheel-sha256" value="3d1f06f941bace12ab26c112bb6b5b1727dc160241c696851604e5269d874835" />
+  </project>
+</manifest>
